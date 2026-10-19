@@ -1,0 +1,191 @@
+table bank_clean
+	lineageTag: 98ce42ff-3e1e-405f-a4bc-9787ef2070da
+
+	column source_row
+		dataType: int64
+		lineageTag: a2491668-7c63-4bf5-9685-9b8dad37570e
+		summarizeBy: none
+		sourceColumn: source_row
+
+	column age
+		dataType: int64
+		lineageTag: dc8095ef-7f67-4892-847d-de55be0c2e28
+		summarizeBy: none
+		sourceColumn: age
+
+	column job
+		dataType: string
+		lineageTag: be5b4bd4-de67-41f9-87a8-e928234f7852
+		sourceColumn: job
+
+	column marital
+		dataType: string
+		lineageTag: aa96c5b0-d4c3-4c84-aed6-f930c81ba531
+		sourceColumn: marital
+
+	column education
+		dataType: string
+		lineageTag: 8337ccf8-62ce-4df0-83d3-bd37048a05ec
+		sourceColumn: education
+
+	column default
+		dataType: string
+		lineageTag: 3772dbdb-c0ab-4ce1-8bb8-155526e776b1
+		sourceColumn: default
+
+	column housing
+		dataType: string
+		lineageTag: 73f23c7f-8453-474c-bda8-50777efe440e
+		sourceColumn: housing
+
+	column loan
+		dataType: string
+		lineageTag: 7e72da06-1201-42a7-9254-0396e73c718a
+		sourceColumn: loan
+
+	column contact
+		dataType: string
+		lineageTag: 3dfcdd40-15d1-4e8d-b208-9f1cbc5c0ebd
+		sourceColumn: contact
+
+	column month
+		dataType: string
+		lineageTag: c6843191-32ef-491e-b8d9-8e189cbe39ce
+		sourceColumn: month
+
+	column day_of_week
+		dataType: string
+		lineageTag: c4379822-9666-4e98-843f-4f0ca5388a4a
+		sourceColumn: day_of_week
+
+	column duration
+		dataType: int64
+		lineageTag: a16a0846-dfbe-4fea-ac77-82c252647891
+		summarizeBy: none
+		sourceColumn: duration
+
+	column campaign
+		dataType: int64
+		lineageTag: 43139924-0299-4b7c-8ba9-3027be517e92
+		summarizeBy: none
+		sourceColumn: campaign
+
+	column pdays
+		dataType: int64
+		lineageTag: 39706fb9-a4ed-4bad-83fd-c2b2f732c229
+		summarizeBy: none
+		sourceColumn: pdays
+
+	column previous
+		dataType: int64
+		lineageTag: 61962db6-2578-4cba-b8b6-6f43a872596f
+		summarizeBy: none
+		sourceColumn: previous
+
+	column poutcome
+		dataType: string
+		lineageTag: 978b62aa-2e7e-47f3-81f7-cd86b2f509b3
+		sourceColumn: poutcome
+
+	column 'emp.var.rate'
+		dataType: double
+		lineageTag: bdb906a5-0191-43da-be7c-51d662a9bf0d
+		summarizeBy: none
+		sourceColumn: emp.var.rate
+
+	column 'cons.price.idx'
+		dataType: double
+		lineageTag: 0cb70cb8-e874-40f7-8b8a-60be46491010
+		summarizeBy: none
+		sourceColumn: cons.price.idx
+
+	column 'cons.conf.idx'
+		dataType: double
+		lineageTag: 617b3c7f-58e8-4361-ac07-d8c5fa84f0b6
+		summarizeBy: none
+		sourceColumn: cons.conf.idx
+
+	column euribor3m
+		dataType: double
+		lineageTag: 08d5aa3f-d928-442a-a351-9ca27a31dc2b
+		summarizeBy: none
+		sourceColumn: euribor3m
+
+	column 'nr.employed'
+		dataType: double
+		lineageTag: 0b1af003-3e44-430a-b910-584be3b8636f
+		summarizeBy: none
+		sourceColumn: nr.employed
+
+	column y
+		dataType: string
+		lineageTag: 293c39ca-43d8-462c-b1f8-c5ad29dbb9d4
+		sourceColumn: y
+
+	column year
+		dataType: string
+		lineageTag: 8e12b546-a79e-4495-abba-d1d24ce55232
+		sourceColumn: year
+
+	column campaign_period
+		dataType: string
+		lineageTag: 826492b5-7fb6-4830-9b63-136e64fa2ae0
+		sourceColumn: campaign_period
+
+	column y_flag
+		dataType: int64
+		lineageTag: f9a39eb9-f3e0-43e6-8391-1a6c2430d133
+		summarizeBy: none
+		sourceColumn: y_flag
+
+	column previously_contacted
+		dataType: int64
+		lineageTag: a3787414-4e7e-4164-98fe-fb1c6911022c
+		summarizeBy: none
+		sourceColumn: previously_contacted
+
+	column age_band
+		dataType: string
+		lineageTag: e3fb0018-10af-49ad-bc7e-683bca8e1ba4
+		sourceColumn: age_band
+		sortByColumn: 'Age Band Order'
+
+	column campaign_band
+		dataType: string
+		lineageTag: 9afd731f-e03a-4d2b-8318-a19290763415
+		sourceColumn: campaign_band
+		sortByColumn: 'Campaign Band Order'
+
+	column 'Age Band Order' = SWITCH ( TRUE (), bank_clean[age] < 25, 1, bank_clean[age] < 30, 2, bank_clean[age] < 40, 3, bank_clean[age] < 50, 4, bank_clean[age] < 60, 5, 6 )
+		dataType: int64
+		isHidden
+		lineageTag: 65f78834-5774-4ac2-abd9-b90464f01938
+		summarizeBy: none
+
+	column 'Campaign Band Order' = SWITCH ( TRUE (), bank_clean[campaign] <= 5, bank_clean[campaign], bank_clean[campaign] <= 7, 6, bank_clean[campaign] <= 10, 7, 8 )
+		dataType: int64
+		isHidden
+		lineageTag: b6bca637-272a-4fba-b3f1-766d58cc2e8c
+		summarizeBy: none
+
+	column euribor_band = SWITCH ( TRUE (), bank_clean[euribor3m] < 1, "<1", bank_clean[euribor3m] < 2, "1-2", "2+" )
+		dataType: string
+		lineageTag: 5aca5eea-8153-49ae-afeb-f5c7c902e2cc
+		sortByColumn: 'Euribor Band Order'
+
+	column 'Euribor Band Order' = SWITCH ( TRUE (), bank_clean[euribor3m] < 1, 1, bank_clean[euribor3m] < 2, 2, 3 )
+		dataType: int64
+		isHidden
+		lineageTag: 1cc999cc-9969-4e51-bec8-8bd1628fe2af
+		summarizeBy: none
+
+	partition bank_clean = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "bank_clean.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"source_row", Int64.Type}, {"age", Int64.Type}, {"job", type text}, {"marital", type text}, {"education", type text}, {"default", type text}, {"housing", type text}, {"loan", type text}, {"contact", type text}, {"month", type text}, {"day_of_week", type text}, {"duration", Int64.Type}, {"campaign", Int64.Type}, {"pdays", Int64.Type}, {"previous", Int64.Type}, {"poutcome", type text}, {"emp.var.rate", type number}, {"cons.price.idx", type number}, {"cons.conf.idx", type number}, {"euribor3m", type number}, {"nr.employed", type number}, {"y", type text}, {"year", type text}, {"campaign_period", type text}, {"y_flag", Int64.Type}, {"previously_contacted", Int64.Type}, {"age_band", type text}, {"campaign_band", type text}}, "en-US")
+				in
+				    Typed
+

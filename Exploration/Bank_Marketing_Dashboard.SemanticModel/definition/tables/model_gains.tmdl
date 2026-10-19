@@ -1,0 +1,37 @@
+table model_gains
+	lineageTag: 5b5a530b-9b64-4b9e-a813-3446f3ded6d3
+
+	column share_of_customers_called_pct
+		dataType: double
+		lineageTag: dfd674f4-419b-4d65-85df-9a9958b49d2a
+		summarizeBy: none
+		sourceColumn: share_of_customers_called_pct
+
+	column customers_called
+		dataType: int64
+		lineageTag: e1e2b3d3-b624-48b5-9777-56fa99f20a88
+		summarizeBy: none
+		sourceColumn: customers_called
+
+	column model_share_of_subscribers_pct
+		dataType: double
+		lineageTag: f5d88345-4946-4717-823b-1d2242b67a31
+		summarizeBy: none
+		sourceColumn: model_share_of_subscribers_pct
+
+	column random_share_of_subscribers_pct
+		dataType: double
+		lineageTag: e86137a4-a851-48f6-bada-1cc0b9576e6e
+		summarizeBy: none
+		sourceColumn: random_share_of_subscribers_pct
+
+	partition model_gains = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "model_gains.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"share_of_customers_called_pct", type number}, {"customers_called", Int64.Type}, {"model_share_of_subscribers_pct", type number}, {"random_share_of_subscribers_pct", type number}}, "en-US")
+				in
+				    Typed
+

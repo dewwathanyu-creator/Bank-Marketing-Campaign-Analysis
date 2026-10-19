@@ -1,0 +1,17 @@
+table CallBand
+	lineageTag: 868d6ca5-7865-4c14-b7ea-a4d992478459
+
+	column Band
+		lineageTag: 65773ce7-024d-4d03-8615-930efd03403b
+		isNameInferred
+		sourceColumn: [Band]
+
+	column BandOrder
+		lineageTag: cbb298f2-82fd-4a18-8be7-ad88b036baff
+		isNameInferred
+		sourceColumn: [BandOrder]
+
+	partition CallBand = calculated
+		mode: import
+		source = DATATABLE ( "Band", STRING, "BandOrder", INTEGER, { { "Calls 1-3", 1 }, { "Calls 4+", 2 } } )
+

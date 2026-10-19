@@ -1,0 +1,17 @@
+table CallNumber
+	lineageTag: 18dd6f17-17fc-45af-84ea-299defb9f049
+
+	column CallNo
+		lineageTag: 2a7b56ff-fef5-45ea-a659-f49fdcb6338e
+		isNameInferred
+		sourceColumn: [CallNo]
+
+	column Label
+		lineageTag: 242999c0-9ca1-4d6b-a691-3afd3c9856ff
+		isNameInferred
+		sourceColumn: [Label]
+
+	partition CallNumber = calculated
+		mode: import
+		source = DATATABLE ( "CallNo", INTEGER, "Label", STRING, { {1,"1"},{2,"2"},{3,"3"},{4,"4"},{5,"5"},{6,"6"},{7,"7+"} } )
+

@@ -4,6 +4,7 @@ An analysis of a retail bank's term-deposit telemarketing campaign: which client
 
 **Tools:** SQL (SQLite) · Power BI (DAX) · Python (pandas, scikit-learn, matplotlib)
 **Data:** [UCI Bank Marketing](https://archive.ics.uci.edu/dataset/222/bank+marketing) (Portuguese bank, 2008-2010)
+**Demo:** [30-second dashboard walkthrough](Demo/dashboard_walkthrough.mp4)
 
 ## Table of Contents
 
@@ -115,7 +116,7 @@ Channel, age, job and interest-rate effects appear in the pooled data but cannot
 - See data checks and every cleaning decision in the [data check notebook](Exploration/01_data_check.ipynb).
 - See the EDA in the [EDA notebook](Exploration/02_eda.ipynb) and the model in the [model notebook](Exploration/03_model.ipynb).
 - See the 13 SQL queries in the [SQL file](Exploration/bank_marketing_queries.sql).
-- See the [Power BI dashboard](Exploration/Bank_Marketing_Dashboard.pbix) (3 pages; it reads `Data/bank_clean.csv`, so re-point the data source after cloning).
+- See the [Power BI dashboard](Exploration/Bank_Marketing_Dashboard.pbip) (3 pages; it reads `Data/bank_clean.csv` and `Data/model_gains.csv`). After cloning, open Transform data and change the `DataFolder` parameter to your local `Data` folder (keep the trailing backslash), then refresh.
 
 ## Repository Structure
 

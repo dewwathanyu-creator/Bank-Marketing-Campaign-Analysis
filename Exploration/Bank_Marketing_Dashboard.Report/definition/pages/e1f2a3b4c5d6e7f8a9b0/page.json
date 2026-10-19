@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "e1f2a3b4c5d6e7f8a9b0",
+  "displayName": "3 Who to call",
+  "displayOption": "FitToPage",
+  "height": 810,
+  "width": 1440,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F3F7F8'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "a9b2e9185997560620c6",
+      "target": "6e7a2dcd1d23265e3295",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a9b2e9185997560620c6",
+      "target": "b2892580ee3c6568c75b",
+      "type": "NoFilter"
+    }
+  ]
+}

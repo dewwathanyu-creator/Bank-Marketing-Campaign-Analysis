@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Bank_Marketing_Dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "79507a4b-f5dd-4bf4-9fe1-9d3d69fb9021"
+  }
+}

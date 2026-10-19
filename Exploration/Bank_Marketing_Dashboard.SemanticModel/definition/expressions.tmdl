@@ -1,0 +1,5 @@
+expression DataFolder = "C:\Users\acer\Desktop\Bank Marketing\Bank-Marketing-Campaign-Analysis\Data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 328e39e4-10dd-4e6c-bd01-9d0f37b4687e
+
+	annotation PBI_ResultType = Text
+
